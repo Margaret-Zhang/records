@@ -1,0 +1,4 @@
+在Firefox浏览器的安装目录下找到：defaults\pref\channel-prefs.js
+用记事本修改第9行第二个引号的内容，可以改成none，比如：
+pref("app.update.channel", "esr"); 改成
+pref("app.update.channel", "none");

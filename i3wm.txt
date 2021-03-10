@@ -1,0 +1,68 @@
+network:
+-> networkmanager
+
+xwindow:
+-> xorg-server xorg-xinit xorg-xrandr xorg-xprop
+
+i3 window manager:
+-> i3-gaps i3lock
+
+fonts:
+-> ttf-dejavu wqy-zenhei adobe-source-code-pro-fonts ttf-font-awesome
+
+program launcher:
+-> rofi
+
+terminal:
+-> alacritty
+
+wallpaper:
+-> feh
+
+opacity:
+-> picom
+
+input-method:
+-> fcitx
+
+bar:
+-> polybar
+
+
+  ==================================================
+ =                                                  =
+=  i3 window  manager的安装和简单配置(Arch Linux)     =
+ =                                                  =
+  ==================================================
+
+1. 安装字体，wqy-zenhei是中文字体。 安装Xorg服务器，启动的话可以用登陆管理器(gdm，sddm，lightdm)
+，也可以使用xorg-xinit启动，这里用后者。i3wm可以将启动的程序放到一个自定义的工作空间中，需要用
+xorg-xprop来查看程序在xwindow中的类别。 i3lock用于锁定。 i3wm有好几个软件包，这里用i3-gaps。 
+终端alacritty。 xorg-xrandr能调整分辨率，但是虚拟机调整之后有显示问题。。。
+rofi是程序启动器。 feh用于设置壁纸。 picom设置全局透明。 firefox网络浏览器。
+
+>>> pacman -S ttf-dejavu wqy-zenhei adobe-source-code-pro-fonts
+>>> pacman -S xorg-server xorg-xinit xorg-xprop i3-gaps i3lock alacritty
+>>> pacman -S rofi feh picom
+>>> pacman -S firefox
+
+2. 复制xinitrc到家目录。 修改文件的结尾，启动i3wm，startx启动Xorg
+>>> cp /etc/X11/xinit/xinitrc ~/.xinitrc
+[~/.xinitrc]	- exec twm
+				- ...
+				+ exec i3
+
+3. 修改i3的配置文件。 修改键绑定rofi，alacritty等等。 
+右下角的错误是没有安装i3status导致的，可以不管，等下用polybar。
+Mod1是Windows(super)键，Mod4是Alt键。 
+
+[~/.config/i3/config]
+
+4. 启用壁纸。 设置全局透明，物理机的话不需要设置picom.conf，VirtualBox的问题。
+
+[~/.config/i3/config]
+
+5. 启用polybar。 
+
+[~/.config/polybar/launch.sh]
+[~/.config/i3/config]

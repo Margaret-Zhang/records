@@ -1,0 +1,12 @@
+Windows 8.1/10中删除文件的默认关联程序
+
+一不小心勾选了某个文件类型的默认打开程序，假设是jsp文件，默认选择为IE，这样以后双击jsp文件总是会用IE打开。
+
+如果不爽，可以通过如下方法恢复到原样：
+
+
+1、找到HKEY_CLASSES_ROOT\.jsp ，默认字符串值中删除数据jsp_auto_file；
+2、找到HKEY_CLASSES_ROOT\jsp_auto_file， 删除jsp_auto_file整个文件夹；
+
+3、找到HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.jsp，只保留OpenWithList项，其余全部删除，OpenWithList只保留默认值，其余的也删除；
+4、重启电脑；

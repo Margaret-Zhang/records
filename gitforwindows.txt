@@ -1,0 +1,10 @@
+在Windows上的Git克隆代码时，报一下错误，检查ssh密钥对正常，git全局设置用户名和邮箱正确。
+
+Warning: Permanently added the RSA host key for IP address '13.229.188.59' to the list of known hosts.
+\302\226git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+解决方法：手动输入git clone <repository url>

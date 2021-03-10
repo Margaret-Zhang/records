@@ -1,0 +1,53 @@
+xwindow:
+-> xorg-server xorg-xinit xorg-xrandr xorg-xprop xorg-xset
+
+bsp window manager:
+-> bspwm sxhkd
+
+fonts:
+-> ttf-dejavu wqy-zenhei adobe-source-code-pro
+
+program launcher:
+-> rofi
+
+terminal:
+-> alacritty
+
+wallpaper:
+-> feh
+
+input-method:
+-> fcitx
+
+
+	 ===================================
+	=       bspwm configuration         =
+ 	 ===================================
+
+需要的包:
+xorg: x window实现(xorg-server xorg-xprop xorg-xset xorg-xinit)
+bspwm: 窗口管理器
+sxhkd: bspwm不处理键盘事件，由simple X hotkey daemon程序处理
+rofi: 程序启动器
+termite: 终端模拟器
+firefox: 网络浏览器
+feh: 显示壁纸
+wqy-zenhei: 中文字体
+ttf-dejavu adobe-source-code-pro-fonts: 其他字体
+polybar: 状态栏(需要archlinuxcn)
+
+1. 修改~/.xinitrc文件
+>>> cp -v /etc/X11/xinit/xinitrc ~/.xinitrc
+>>> vim ~/.xinitrc
+
+2. 在~/.config下创建bspwm和sxhkd配置文件
+>>> mkdir -v ~/.config
+>>> mkdir -v ~/.config/{bspwm,sxhkd}
+>>> cp -v /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/
+>>> cp -v /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/
+>>> vim ~/.config/bspwm/bspwmrc (设置窗口管理器)
+>>> vim ~/.config/sxhkd/sxhkdrc (调整键位绑定)
+在.config目录下设置rofi，termite，polybar的配置。
+
+3. 设置壁纸
+>>> vim ~/.config/bspwm/bspwmrc
